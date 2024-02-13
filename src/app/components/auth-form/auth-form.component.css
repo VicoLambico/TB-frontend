@@ -1,0 +1,22 @@
+form {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 300px;
+  margin: auto;
+}
+
+mat-form-field {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+button {
+  width: 100%;
+  margin-top: 20px;
+}
+.center-container {
+  display: flex;
+  align-items: center;
+  height: 100vh; /* Ajustez la hauteur si nécessaire */
+}
