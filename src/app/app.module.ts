@@ -15,6 +15,11 @@ import { AuthFormComponent } from './components/auth-form/auth-form.component';
 import {HeaderComponent} from "./components/header/header.component";
 import { UserPageComponent } from './components/user-page/user-page.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { MenuComponent } from './components/menu/menu.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatCardModule} from "@angular/material/card";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatMenuModule} from "@angular/material/menu";
 
 
 @NgModule({
@@ -23,7 +28,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     HeroComponent,
     AuthFormComponent,
     HeaderComponent,
-    UserPageComponent
+    UserPageComponent,
+    MenuComponent
   ],
   imports: [
     HttpClientModule,
@@ -35,6 +41,10 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     FormsModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatIconModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -30,13 +30,6 @@ export class AuthFormComponent {
         },
         error => {
           console.error('Error registering user:', error);
-          // Ajoutez ici la logique pour gérer les erreurs d'inscription
-          //je voudrais switch automatiquement sur tab login
-          // if (error.status === 400) {
-          //   this.snackBar.open('Login or Email already used.', 'Close', {
-          //     duration: 5000,
-          //   });
-          // }
           if (error.status === 400 && error.error) {
             this.snackBar.open(error.error, 'Close', {
               duration: 5000,
@@ -47,10 +40,8 @@ export class AuthFormComponent {
       );
     } else {
       console.error('All fields (email, login, password) are required.');
-      // Ajoutez ici la logique pour gérer le cas où les champs ne sont pas tous remplis
       this.snackBar.open('Please fill in all fields.', 'Close', {
         duration: 5000, // Durée pendant laquelle la notification est affichée (en millisecondes)
-
       });
 
     }
@@ -58,10 +49,10 @@ export class AuthFormComponent {
 
   login() {
     this.userService.login(this.credentials).subscribe(response => {
-      console.log('Login successful:', response);
-      const userId = response.id;
-      this.userService.setUserId(userId);
-      this.router.navigate(['/users', userId]);
+        console.log('Login successful:', response);
+        const userId = response.id;
+        this.userService.setUserId(userId);
+        this.router.navigate(['/home']);
       },
       error => {
 
@@ -77,8 +68,8 @@ export class AuthFormComponent {
             duration: 5000,
           });
         }
-        // Ajoutez ici la logique pour gérer les erreurs d'inscription
-    });
+
+      });
   }
 
 }
