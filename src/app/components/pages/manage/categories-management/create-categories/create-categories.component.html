@@ -1,0 +1,20 @@
+<div class="div-form">
+<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+  <h2>Create new category</h2>
+
+
+  <div>
+  <label for="categoryName">Category Name:</label>
+  <input type="text" id="categoryName" formControlName="categoryName" />
+  </div>
+
+    <div>
+  <label for="description">Description:</label>
+  <textarea id="description" formControlName="description"></textarea>
+    </div>
+  <!-- Ajoutez d'autres champs du formulaire si nécessaire -->
+  <div>
+    <button type="submit" [disabled]="!categoryForm.valid">Create Category</button>
+  </div>
+</form>
+</div>

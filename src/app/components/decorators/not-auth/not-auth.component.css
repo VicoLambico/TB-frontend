@@ -1,0 +1,27 @@
+/*.not-auth-container {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: flex-start; !* Ajustez pour aligner en haut *!*/
+/*  height: 100vh;*/
+/*  padding-top: 50px; !* Ajustez selon vos besoins *!*/
+/*}*/
+
+/*.not-auth-message {*/
+/*  font-size: 18px;*/
+/*  margin-bottom: 16px;*/
+/*}*/
+/* not-auth.component.css */
+.not-auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh; /* Vous pouvez ajuster la hauteur en fonction de vos besoins */
+  background-color: indianred; /* Couleur de fond rouge avec une opacité de 0.5 */
+  padding-top: 100px;
+}
+
+.not-auth-message {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+

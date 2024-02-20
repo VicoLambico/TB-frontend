@@ -1,0 +1,40 @@
+
+<h2>Heroes List</h2>
+
+<div *ngFor="let hero of heroes" class="hero-card">
+  <h3>{{ hero.heroName }}</h3>
+  <p>Level: {{ hero.lvl }}</p>
+  <p>LP: {{ hero.lp }}</p>
+  <p>DPS: {{ hero.dps }}</p>
+  <p>Energy: {{ hero.energy }}</p>
+
+  <div *ngIf="editingHeroId === hero.id" class="edit-section">
+    <label for="editedHeroName">Hero Name:</label>
+    <input type="text" id="editedHeroName" [(ngModel)]="editedHeroName" name="editedHeroName" />
+
+    <!-- Ajoutez d'autres champs éditables ici -->
+        <label for="editedHeroLvl">Level:</label>
+        <input type="number" id="editedHeroLvl" [(ngModel)]="editedHeroLvl" name="editedHeroLvl" />
+
+        <label for="editedHeroLp">LP:</label>
+        <input type="number" id="editedHeroLp" [(ngModel)]="editedHeroLp" name="editedHeroLp" />
+
+        <label for="editedHeroDps">DPS:</label>
+        <input type="number" id="editedHeroDps" [(ngModel)]="editedHeroDps" name="editedHeroDps" />
+
+        <label for="editedHeroEnergy">Energy:</label>
+        <input type="number" id="editedHeroEnergy" [(ngModel)]="editedHeroEnergy" name="editedHeroEnergy" />
+
+
+    <button (click)="saveEditedHero(hero.id, { heroName: editedHeroName, lvl: editedHeroLvl, lp: editedHeroLp, dps: editedHeroDps, energy: editedHeroEnergy })" class="action-button save-button">Save</button>
+    <button (click)="cancelEdit()" class="action-button cancel-button">Cancel</button>
+
+
+  </div>
+
+  <div *ngIf="editingHeroId !== hero.id">
+    <button (click)="editHero(hero)" class="action-button edit-button">Edit</button>
+  <button (click)="confirmRemoveHero(hero.id)" class="action-button remove-button">Remove</button>
+  </div>
+
+</div>

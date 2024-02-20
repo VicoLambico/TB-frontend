@@ -1,0 +1,24 @@
+
+<div *ngFor="let category of categories" class="category-card">
+  <h3>{{ category.categoryName }}</h3>
+  <p>Description: {{ category.description }}</p>
+
+  <div *ngIf="editingCategoryId === category.id">
+    <label for="editedCategoryName">Category Name:</label>
+    <input type="text" id="editedCategoryName" [(ngModel)]="editedCategoryName" name="editedCategoryName" />
+
+    <label for="editedCategoryDescription">Description:</label>
+    <textarea id="editedCategoryDescription" [(ngModel)]="editedCategoryDescription" name="editedCategoryDescription" style="resize: none;"></textarea>
+
+    <button (click)="saveEditedCategory(category.id, { categoryName: editedCategoryName, description: editedCategoryDescription })" class="action-button save-button">Save</button>
+    <button (click)="cancelCategoryEdit()" class="action-button cancel-button" >Cancel</button>
+
+  </div>
+
+  <div *ngIf="editingCategoryId !== category.id">
+    <button (click)="editCategory(category)" class="action-button edit-button">Edit</button>
+  <button (click)="confirmRemoveCategory(category.id)" class="action-button remove-button">Remove</button>
+
+  </div>
+
+</div>

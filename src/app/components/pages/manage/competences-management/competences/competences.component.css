@@ -1,0 +1,51 @@
+h1 {
+  padding-left: 1rem;
+}
+
+.menu-spacer {
+  flex: 1 1 auto;
+}
+
+mat-sidenav-container {
+  height:100%;
+  font-family: 'Your Attractive Font', sans-serif;
+  background-color: #1E1E1E; /* Couleur de fond souhaitée */
+  color: white;
+}
+
+mat-sidenav {
+  /*padding-top: 3.5rem;*/
+  @media screen and (min-width: 600px) {
+    /*padding-top: 4rem;*/
+    background-color: black;
+
+  }
+
+  .entry{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding:0.75rem;
+    color: white;
+  }
+}
+
+mat-sidenav-content{
+  /*padding-top: 1rem;*/
+  @media screen and (min-width: 600px) {
+    /*padding-top: 4rem;*/
+    background-color: #1E1E1E;
+    color: white;
+  }
+}.custom-toolbar {
+   background-color: black;
+ }
+mat-icon{
+  color: white;
+}
+.title-content{
+  padding-top: 1rem;
+  padding-bottom: 0.25rem;
+  background: linear-gradient(to bottom, #0e032d, black);
+
+}
