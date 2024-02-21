@@ -1,7 +1,8 @@
 
 <div *ngFor="let category of categories" class="category-card">
   <h3>{{ category.categoryName }}</h3>
-  <p>Description: {{ category.description }}</p>
+  <p>Description:</p>
+  <p>{{ category.description }}</p>
 
   <div *ngIf="editingCategoryId === category.id">
     <label for="editedCategoryName">Category Name:</label>
