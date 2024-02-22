@@ -1,1 +1,40 @@
-<p>all-competences works!</p>
+<div *ngFor="let competence of competences" class="competence-card">
+  <h3>{{ competence.name }}</h3>
+  <p>Description:</p>
+  <p>{{ competence.description }}</p>
+  <p>Damage: {{ competence.damage }}</p>
+
+  <p>Category: {{ competence.categoryName}}</p>
+
+
+  <div *ngIf="editingCompetenceId === competence.id">
+    <label for="editedCompetenceName">Competence Name:</label>
+    <input type="text" id="editedCompetenceName" [(ngModel)]="editedCompetenceName" name="editedCompetenceName"/>
+
+    <label for="editedCompetenceDescription">Description:</label>
+    <textarea id="editedCompetenceDescription" [(ngModel)]="editedCompetenceDescription"
+              name="editedCompetenceDescription" style="resize: none;"></textarea>
+
+    <label for="editedCompetenceDamage">Damage:</label>
+    <input type="number" id="editedCompetenceDamage" [(ngModel)]="editedCompetenceDamage"
+           name="editedCompetenceDamage"/>
+
+
+    <label for="editedCompetenceCategory">Category:</label>
+    <select id="editedCompetenceCategory" [(ngModel)]="editedCompetenceCategory" name="editedCompetenceCategory">
+      <option *ngFor="let category of categories" [ngValue]="category">{{ category.categoryName }}</option>
+    </select>
+
+    <button
+      (click)="saveEditedCompetence(competence.id, { name: editedCompetenceName, description: editedCompetenceDescription, damage: editedCompetenceDamage, competenceCategory: editedCompetenceCategory })"
+      class="action-button save-button">Save
+    </button>
+    <button (click)="cancelCompetenceEdit()" class="action-button cancel-button">Cancel</button>
+
+  </div>
+
+  <div *ngIf="editingCompetenceId !== competence.id">
+    <button (click)="editCompetence(competence)" class="action-button edit-button">Edit</button>
+    <button (click)="confirmRemoveCompetence(competence.id)" class="action-button remove-button">Remove</button>
+  </div>
+</div>

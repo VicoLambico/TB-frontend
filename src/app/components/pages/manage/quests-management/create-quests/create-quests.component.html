@@ -1,1 +1,36 @@
-<p>create-quests works!</p>
+<div class="div-form">
+  <form [formGroup]="questForm" (ngSubmit)="onSubmit()">
+    <h2>Create new quest</h2>
+
+    <div>
+      <label for="questName">Quest Name:</label>
+      <input type="text" id="questName" formControlName="questName" />
+    </div>
+
+    <div>
+      <label for="questLevel">Quest Level:</label>
+      <input type="number" id="questLevel" formControlName="questLevel" />
+    </div>
+
+    <div>
+      <label for="lp">LP:</label>
+      <input type="number" id="lp" formControlName="lp" />
+    </div>
+
+    <div>
+      <label for="dps">DPS:</label>
+      <input type="number" id="dps" formControlName="dps" />
+    </div>
+
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description" style="resize: none;"></textarea>
+    </div>
+
+    <div>
+      <button type="submit" [disabled]="!questForm.valid">Create Quest</button>
+    </div>
+
+
+  </form>
+</div>

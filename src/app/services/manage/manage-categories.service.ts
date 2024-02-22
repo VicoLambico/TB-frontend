@@ -17,6 +17,10 @@ export class ManageCategoriesService {
   getAllCategories(): Observable<any[]> {
     return this.http.get<any[]>(this.apiURL);
   }
+  getCategoryById(categoryId: number): Observable<any> {
+    const url = `${this.apiURL}/${categoryId}`;
+    return this.http.get<any>(url);
+  }
 
   deleteCategory(categoryId: number): Observable<void> {
     const url = `${this.apiURL}/${categoryId}`;

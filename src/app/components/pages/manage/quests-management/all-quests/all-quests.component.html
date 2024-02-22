@@ -1,1 +1,38 @@
-<p>all-quests works!</p>
+<h2>Quests List</h2>
+
+<div *ngFor="let quest of quests" class="quest-card">
+  <h3>{{ quest.questName }}</h3>
+  <p>Level: {{ quest.questLevel }}</p>
+  <p>LP: {{ quest.lp }}</p>
+  <p>DPS: {{ quest.dps }}</p>
+  <p>Description: </p>
+  <p>{{ quest.description }}</p>
+
+  <div *ngIf="editingQuestId === quest.id" class="edit-section">
+    <label for="editedQuestName">Quest Name:</label>
+    <input type="text" id="editedQuestName" [(ngModel)]="editedQuestName" name="editedQuestName"/>
+
+    <label for="editedQuestLevel">Level:</label>
+    <input type="number" id="editedQuestLevel" [(ngModel)]="editedQuestLevel" name="editedQuestLevel"/>
+
+    <label for="editedQuestLp">LP:</label>
+    <input type="number" id="editedQuestLp" [(ngModel)]="editedQuestLp" name="editedQuestLp"/>
+
+    <label for="editedQuestDps">DPS:</label>
+    <input type="number" id="editedQuestDps" [(ngModel)]="editedQuestDps" name="editedQuestDps"/>
+
+    <label for="editedQuestDescription">Description:</label>
+    <textarea id="editedQuestDescription" [(ngModel)]="editedQuestDescription" style="resize: none;"></textarea>
+
+    <button
+      (click)="saveEditedQuest(quest.id, { questName: editedQuestName, questLevel: editedQuestLevel, lp: editedQuestLp, dps: editedQuestDps, description: editedQuestDescription })"
+      class="action-button save-button">Save
+    </button>
+    <button (click)="cancelEdit()" class="action-button cancel-button">Cancel</button>
+  </div>
+
+  <div *ngIf="editingQuestId !== quest.id">
+    <button (click)="editQuest(quest)" class="action-button edit-button">Edit</button>
+    <button (click)="confirmRemoveQuest(quest.id)" class="action-button remove-button">Remove</button>
+  </div>
+</div>

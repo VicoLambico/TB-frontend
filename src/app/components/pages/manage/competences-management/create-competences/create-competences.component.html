@@ -1,1 +1,37 @@
-<p>create-competences works!</p>
+<div class="div-form">
+  <form [formGroup]="competenceForm" (ngSubmit)="onSubmit()">
+    <h2>Create new Competence</h2>
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name" />
+
+    </div>
+
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description" style="resize: none;"></textarea>
+
+    </div>
+
+    <!-- Dégâts de la compétence -->
+    <div>
+      <label for="damage">Damage:</label>
+      <input type="number" id="damage" formControlName="damage" />
+    </div>
+
+    <!-- Catégorie de la compétence -->
+    <div>
+      <label for="competenceCategory">Category:</label>
+      <select id="competenceCategory" formControlName="competenceCategory">
+        <option [ngValue]="null" disabled>Select a category</option>
+        <option *ngFor="let category of categories" [ngValue]="category">{{ category.categoryName }}</option>
+      </select>
+    </div>
+
+
+    <!-- Ajoutez d'autres champs du formulaire  -->
+    <div>
+      <button type="submit" [disabled]="!competenceForm.valid">Create Competences</button>
+    </div>
+  </form>
+</div>
