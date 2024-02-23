@@ -11,6 +11,7 @@ import {ManageCompetencesService} from "../../../../../services/manage/manage-co
 export class CreateCompetencesComponent implements OnInit{
   competenceForm!: FormGroup;
   categories: any[] = [];
+
   constructor(private fb: FormBuilder, private competencesService: ManageCompetencesService, private categoryService : ManageCategoriesService) {}
 
   ngOnInit(): void {
@@ -18,7 +19,8 @@ export class CreateCompetencesComponent implements OnInit{
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
       damage: [0, [Validators.required, Validators.min(1)]],
-      competenceCategory: [null, [Validators.required]]
+      competenceCategory: [null, [Validators.required]],
+
     });
     this.loadCategories();
   }
@@ -35,9 +37,11 @@ export class CreateCompetencesComponent implements OnInit{
   onSubmit(): void {
     if (this.competenceForm.valid) {
       const newCompetence = this.competenceForm.value;
+
       this.competencesService.createCompetence(newCompetence).subscribe(
         (response) => {
           console.log('Category created successfully:', response);
+
           // Réinitialisez le formulaire après la création
           this.competenceForm.reset();
         },

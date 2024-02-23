@@ -16,6 +16,9 @@ export class CreateCategoriesComponent implements OnInit {
     this.categoryForm = this.fb.group({
       categoryName: ['', [Validators.required]],
       description: ['', [Validators.required]],
+      lp: [0, [Validators.required, Validators.min(1)]],
+      dps: [0, [Validators.required, Validators.min(1)]],
+      energy: [0, [Validators.required, Validators.min(1)]],
       // Ajoutez d'autres champs du formulaire si nécessaire
     });
   }

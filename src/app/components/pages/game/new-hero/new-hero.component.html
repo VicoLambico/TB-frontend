@@ -1,1 +1,35 @@
-<p>new-hero works!</p>
+<div class="div-form">
+  <form [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+    <h2>Create new hero</h2>
+
+    <div>
+      <label for="heroName">Hero Name:</label>
+      <input type="text" id="heroName" formControlName="heroName"/>
+
+    </div>
+
+    <div>
+      <label for="heroCategory">Category:</label>
+      <select id="heroCategory" formControlName="heroCategory">
+        <option [ngValue]="null" disabled>Select a category</option>
+        <option *ngFor="let category of categories " [ngValue]="category">{{ category.categoryName }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="competence">Competence:</label>
+      <select id="competence" formControlName="competence">
+        <option [ngValue]="null" disabled>Select a competence</option>
+        <option *ngFor="let competence of competences " [ngValue]="competence">
+          {{competence.name }}
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <button type="submit" [disabled]="!heroForm.valid">Create Hero</button>
+    </div>
+
+
+  </form>
+</div>

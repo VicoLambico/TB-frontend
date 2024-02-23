@@ -40,6 +40,7 @@ import { CreateCategoriesComponent} from "./components/pages/manage/categories-m
 import { AllCategoriesComponent } from './components/pages/manage/categories-management/all-categories/all-categories.component';
 import { CreateQuestsComponent } from './components/pages/manage/quests-management/create-quests/create-quests.component';
 import { AllQuestsComponent } from './components/pages/manage/quests-management/all-quests/all-quests.component';
+import {CategoryFilterPipe} from "./CategoryFilterPipe";
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { AllQuestsComponent } from './components/pages/manage/quests-management/
     AllCategoriesComponent,
     CreateQuestsComponent,
     AllQuestsComponent,
+    CategoryFilterPipe,
   ],
   imports: [
     HttpClientModule,

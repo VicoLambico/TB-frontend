@@ -26,10 +26,12 @@ import {
 import {
   AllCategoriesComponent
 } from "./components/pages/manage/categories-management/all-categories/all-categories.component";
+import {NotAuthComponent} from "./components/decorators/not-auth/not-auth.component";
 
 const routes: Routes = [
   {path: 'login', component: AuthFormComponent, canActivate: [AuthGuard]},
 
+  {path: 'not-auth', component: NotAuthComponent},
 
   {
     path: 'manage-heroes', component: HeroComponent, children: [

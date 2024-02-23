@@ -1,41 +1,35 @@
 <div class="div-form">
-<form [formGroup]="heroForm" (ngSubmit)="onSubmit()">
-  <h2>Create new hero</h2>
+  <form [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+    <h2>Create new hero</h2>
 
-  <div>
-    <label for="heroName">Hero Name:</label>
-    <input type="text" id="heroName" formControlName="heroName" />
+    <div>
+      <label for="heroName">Hero Name:</label>
+      <input type="text" id="heroName" formControlName="heroName"/>
 
-  </div>
+    </div>
 
-  <div>
-    <label for="level">Level:</label>
-    <input type="number" id="level" formControlName="level" />
-    <!-- Ajoutez une vérification d'erreur pour le champ Level si nécessaire -->
-  </div>
+    <div>
+      <label for="heroCategory">Category:</label>
+      <select id="heroCategory" formControlName="heroCategory">
+        <option [ngValue]="null" disabled>Select a category</option>
+        <option *ngFor="let category of categories " [ngValue]="category">{{ category.categoryName }}</option>
+      </select>
+    </div>
 
-  <div>
-    <label for="lp">LP:</label>
-    <input type="number" id="lp" formControlName="lp" />
-    <!-- Ajoutez une vérification d'erreur pour le champ LP si nécessaire -->
-  </div>
+    <div>
+      <label for="competence">Competence:</label>
+      <select id="competence" formControlName="competence">
+        <option [ngValue]="null" disabled>Select a competence</option>
+        <option *ngFor="let competence of competences " [ngValue]="competence">
+        {{competence.name }}
+        </option>
+      </select>
+    </div>
 
-  <div>
-    <label for="dps">DPS:</label>
-    <input type="number" id="dps" formControlName="dps" />
-    <!-- Ajoutez une vérification d'erreur pour le champ DPS si nécessaire -->
-  </div>
-
-  <div>
-    <label for="energy">Energy:</label>
-    <input type="number" id="energy" formControlName="energy" />
-    <!-- Ajoutez une vérification d'erreur pour le champ Energy si nécessaire -->
-  </div>
-
-  <div>
-    <button type="submit" [disabled]="!heroForm.valid">Create Hero</button>
-  </div>
+    <div>
+      <button type="submit" [disabled]="!heroForm.valid">Create Hero</button>
+    </div>
 
 
-</form>
+  </form>
 </div>

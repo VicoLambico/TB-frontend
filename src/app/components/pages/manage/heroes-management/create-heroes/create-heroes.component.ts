@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ManageHeroesService} from "../../../../../services/manage/manage-heroes.service";
 import {DropzoneConfigInterface} from "ngx-dropzone-wrapper";
+import {ManageCategoriesService} from "../../../../../services/manage/manage-categories.service";
+import {ManageCompetencesService} from "../../../../../services/manage/manage-competences.service";
 
 @Component({
   selector: 'app-create-heroes',
@@ -10,20 +12,48 @@ import {DropzoneConfigInterface} from "ngx-dropzone-wrapper";
 })
 export class CreateHeroesComponent implements OnInit{
   heroForm!: FormGroup;
-
-  constructor(private fb: FormBuilder, private heroService: ManageHeroesService) {}
+  categories: any[] = [];
+  competences: any[] =[];
+  selectedCategory: any | null = null;
+  competencesCategory :any[] =[];
+  constructor(
+    private fb: FormBuilder,
+    private heroService: ManageHeroesService,
+    private categoryService : ManageCategoriesService,
+    private competenceService : ManageCompetencesService
+  ) {}
 
   ngOnInit(): void {
     this.heroForm = this.fb.group({
       heroName: ['', [Validators.required]],
-      level: [0, [Validators.required, Validators.min(1)]],
-      lp: [0, [Validators.required, Validators.min(1)]],
-      dps: [0, [Validators.required, Validators.min(1)]],
-      energy: [0, [Validators.required, Validators.min(1)]],
       // Ajoutez d'autres champs du formulaire si nécessaire
+      heroCategory: [null, [Validators.required]],
+      competence: [null, [Validators.required]]
     });
+    this.loadCategories();
+    this.loadCompetence();
+    this.watchCategoryChanges();
   }
-
+  loadCategories(): void {
+    this.categoryService.getAllCategories().subscribe(
+      (categories) => {
+        this.categories = categories;
+      },
+      (error) => {
+        console.error('Error loading categories:', error);
+      }
+    );
+  }
+  loadCompetence(): void {
+    this.competenceService.getAllCompetence().subscribe(
+      (competence) => {
+        this.competences = competence;
+      },
+      (error) => {
+        console.error('Error loading categories:', error);
+      }
+    );
+  }
   onSubmit(): void {
     if (this.heroForm.valid) {
       const newHero = this.heroForm.value;
@@ -39,5 +69,16 @@ export class CreateHeroesComponent implements OnInit{
       );
     }
   }
+  watchCategoryChanges(): void {
+    this.heroForm.get('heroCategory')?.valueChanges.subscribe(
+      (selectedCategory) => {
+        // Mettez à jour la variable selectedCategory en fonction des changements
+        this.selectedCategory = selectedCategory.id;
 
+        // Effectuez d'autres actions en fonction de la catégorie sélectionnée si nécessaire
+        console.log('Selected Category (before submit):', this.selectedCategory);
+
+      }
+    );
+  }
 }
