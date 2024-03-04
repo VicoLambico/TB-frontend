@@ -1,1 +1,14 @@
-<p>launch-quest works!</p>
+<h2>Quests List</h2>
+
+<div *ngFor="let quest of quests" class="quest-card">
+  <h3>{{ quest.questName }}</h3>
+  <p>required level: {{ quest.questLevel }}</p>
+  <p>life points required: {{ quest.lp }}</p>
+  <p>damage required: {{ quest.dps }}</p>
+  <p>experience provided: {{ quest.experience }}</p>
+  <p>Description: </p>
+  <p>{{ quest.description }}</p>
+
+  <button class="launch-button" (click)="launchQuest(quest)">Launch Quest</button>
+
+</div>

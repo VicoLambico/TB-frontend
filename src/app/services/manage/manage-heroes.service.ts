@@ -10,8 +10,12 @@ export class ManageHeroesService {
 
   constructor(private http: HttpClient) {}
 
-  createHero(hero: any): Observable<any> {
-    return this.http.post(this.apiURL, hero);
+  // createHero(hero: any): Observable<any> {
+  //   return this.http.post(this.apiURL, hero);
+  // }
+  createHero(hero: any, userId: number): Observable<any> {
+    const url = `${this.apiURL}?userId=${userId}`;
+    return this.http.post(url, hero);
   }
   getAllHeroes(): Observable<any[]> {
     return this.http.get<any[]>(this.apiURL);

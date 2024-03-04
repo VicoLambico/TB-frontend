@@ -20,6 +20,7 @@ export class CreateQuestsComponent implements OnInit{
       lp: [0, [Validators.required, Validators.min(1)]],
       dps: [0, [Validators.required, Validators.min(1)]],
       description: ["", [Validators.required]],
+      experience: [0, [Validators.required, Validators.min(1)]],
       // ... autres champs du formulaire ...
     });
   }

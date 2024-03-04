@@ -12,7 +12,9 @@ export class AllCategoriesComponent implements OnInit {
   editingCategoryId: number | null = null;
   editedCategoryName: string = '';
   editedCategoryDescription: string = '';
-
+  editedCategoryLP: number = 0;
+  editedCategoryDPS: number = 0;
+  editedCategoryEnergy: number = 0;
   constructor(private categoriesService: ManageCategoriesService) { }
 
   ngOnInit(): void {
@@ -61,6 +63,12 @@ export class AllCategoriesComponent implements OnInit {
         this.loadCategories();
         // Désactivez le mode d'édition après avoir sauvegardé les modifications
         this.editingCategoryId = null;
+        this.editedCategoryDescription = '';
+        this.editedCategoryName = '';
+        this.editedCategoryDPS = 0;
+        this.editedCategoryLP = 0;
+        this.editedCategoryEnergy = 0;
+
       },
       (error) => {
         console.error('Error updating category:', error);
@@ -71,5 +79,11 @@ export class AllCategoriesComponent implements OnInit {
   cancelCategoryEdit(): void {
     // Désactivez le mode d'édition sans sauvegarder les modifications
     this.editingCategoryId = null;
+    this.editedCategoryDescription = '';
+    this.editedCategoryName = '';
+    this.editedCategoryDPS = 0;
+    this.editedCategoryLP = 0;
+    this.editedCategoryEnergy = 0;
+
   }
 }

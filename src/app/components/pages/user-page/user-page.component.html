@@ -1,1 +1,47 @@
-<h1>Welcome home, {{ userLogin }} !</h1>
+<div *ngIf="isUserRoute()">
+  <h1>Welcome home, {{ userLogin }} !</h1>
+  <h4>You'll discover the different hero categories and the competences available for each of them. </h4>
+<h2 class>All categories:</h2>
+
+
+  <div *ngFor="let category of categories" class="card">
+    <h1 class="title-card">{{ category.categoryName }}</h1>
+    <img class="image-card" [src]="'assets/images/' + category.categoryName + '.jpg'" alt="Category Image">
+    <div class="description">
+      <p><strong>Description:</strong></p>
+      <p>{{ category.description }}</p>
+    </div>
+    <div class="characteristics">
+      <p><strong>Initial Characteristics:</strong></p>
+      <div class="stat-bar">
+        <p class="stat-label">Damage:</p>
+        <progress class="stat-meter dps" max="{{ category.dps }}" [value]="category.dps"></progress>
+        <p class="stat-value">{{ category.dps }}</p>
+      </div>
+      <div class="stat-bar">
+        <p class="stat-label">Life Point:</p>
+        <progress class="stat-meter lp" max="category.lp" [value]="category.lp"></progress>
+        <p class="stat-value">{{ category.lp }}</p>
+      </div>
+
+      <div class="stat-bar">
+        <p class="stat-label">Energy:</p>
+        <progress class="stat-meter energy" max="10" [value]="category.energy"></progress>
+        <p class="stat-value">{{ category.energy }}</p>
+      </div>
+    </div>
+  </div>
+
+
+<h2>All competences:</h2>
+<div *ngFor="let competence of competences" class="card">
+  <h1 class="title-card">{{ competence.name }}</h1>
+  <p><strong>Description:</strong></p>
+  <p>{{ competence.description }}</p>
+  <p>Damage: {{ competence.damage }}</p>
+
+  <p>Category: {{ competence.categoryName}}</p>
+
+</div>
+
+</div>

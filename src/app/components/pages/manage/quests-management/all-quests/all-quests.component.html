@@ -2,9 +2,10 @@
 
 <div *ngFor="let quest of quests" class="quest-card">
   <h3>{{ quest.questName }}</h3>
-  <p>Level: {{ quest.questLevel }}</p>
-  <p>LP: {{ quest.lp }}</p>
-  <p>DPS: {{ quest.dps }}</p>
+  <p>Level required: {{ quest.questLevel }}</p>
+  <p>life point required: {{ quest.lp }}</p>
+  <p>Damage required: {{ quest.dps }}</p>
+  <p>Experience point provide: {{ quest.experience }}</p>
   <p>Description: </p>
   <p>{{ quest.description }}</p>
 
@@ -12,14 +13,17 @@
     <label for="editedQuestName">Quest Name:</label>
     <input type="text" id="editedQuestName" [(ngModel)]="editedQuestName" name="editedQuestName"/>
 
-    <label for="editedQuestLevel">Level:</label>
+    <label for="editedQuestLevel">Level required:</label>
     <input type="number" id="editedQuestLevel" [(ngModel)]="editedQuestLevel" name="editedQuestLevel"/>
 
-    <label for="editedQuestLp">LP:</label>
+    <label for="editedQuestLp">Life point required:</label>
     <input type="number" id="editedQuestLp" [(ngModel)]="editedQuestLp" name="editedQuestLp"/>
 
-    <label for="editedQuestDps">DPS:</label>
+    <label for="editedQuestDps">Damage required:</label>
     <input type="number" id="editedQuestDps" [(ngModel)]="editedQuestDps" name="editedQuestDps"/>
+
+    <label for="editedQuestExperience">Experience point provide:</label>
+    <input type="number" id="editedQuestExperience" [(ngModel)]="editedQuestExperience" name="editedQuestExperience"/>
 
     <label for="editedQuestDescription">Description:</label>
     <textarea id="editedQuestDescription" [(ngModel)]="editedQuestDescription" style="resize: none;"></textarea>

@@ -13,6 +13,7 @@ export class AllQuestsComponent implements OnInit {
   editedQuestLevel: number = 0;
   editedQuestLp: number = 0;
   editedQuestDps: number = 0;
+  editedQuestExperience: number = 0;
   editedQuestDescription: string = '';
 
   constructor(private questsService: ManageQuestsService) { }
@@ -58,6 +59,7 @@ export class AllQuestsComponent implements OnInit {
     this.editedQuestLevel = quest.questLevel;
     this.editedQuestLp = quest.lp;
     this.editedQuestDps = quest.dps;
+    this.editedQuestExperience = quest.experience;
     this.editedQuestDescription = quest.description;
   }
 

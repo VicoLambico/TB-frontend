@@ -70,10 +70,7 @@ export class AllCompetencesComponent implements OnInit {
   editCompetence(competence: any): void {
     // Activez le mode d'édition pour cette compétence
     this.editingCompetenceId = competence.id;
-    this.editedCompetenceName = competence.name;
-    this.editedCompetenceDescription = competence.description;
-    this.editedCompetenceDamage = competence.damage;
-    this.editedCompetenceCategory = competence.competenceCategory.id;
+
   }
 
   saveEditedCompetence(competenceId: number, competenceUpdates: any): void {

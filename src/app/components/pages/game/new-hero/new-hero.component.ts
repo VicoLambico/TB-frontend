@@ -21,6 +21,7 @@ export class NewHeroComponent implements OnInit{
     private heroService: ManageHeroesService,
     private categoryService : ManageCategoriesService,
     private competenceService : ManageCompetencesService,
+    private userService : UserService,
   ) {}
 
   ngOnInit(): void {
@@ -57,7 +58,11 @@ export class NewHeroComponent implements OnInit{
   onSubmit(): void {
     if (this.heroForm.valid) {
       const newHero = this.heroForm.value;
-      this.heroService.createHero(newHero).subscribe(
+
+      const userIdString = this.userService.getUserId();
+      const userId = Number(userIdString);
+
+      this.heroService.createHero(newHero,userId).subscribe(
         (response) => {
           console.log('Hero created successfully:', response);
           // Réinitialisez le formulaire après la création

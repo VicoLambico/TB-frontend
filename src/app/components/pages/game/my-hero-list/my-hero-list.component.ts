@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ManageHeroesService} from "../../../../services/manage/manage-heroes.service";
+import {ManageCategoriesService} from "../../../../services/manage/manage-categories.service";
 
 @Component({
   selector: 'app-my-hero-list',
@@ -10,20 +11,32 @@ export class MyHeroListComponent implements OnInit{
   heroes: any[] = [];
   editingHeroId: number | null = null;
   editedHeroName: string = '';
-  editedHeroLvl: number = 0;
-  editedHeroLp: number = 0;
-  editedHeroDps: number = 0;
-  editedHeroEnergy: number = 0;
-  constructor(private heroService: ManageHeroesService) { }
+  categories: any[] = [];
+
+  constructor(
+    private heroService: ManageHeroesService,
+    private categoriesService: ManageCategoriesService
+  ) { }
 
   ngOnInit(): void {
     this.loadHeroes();
+    this.loadCategories();
   }
 
   loadHeroes(): void {
     this.heroService.getAllHeroes().subscribe(
       (heroes) => {
         this.heroes = heroes;
+      },
+      (error) => {
+        console.error('Error loading heroes:', error);
+      }
+    );
+  }
+  loadCategories(): void {
+    this.categoriesService.getAllCategories().subscribe(
+      (categories) => {
+        this.categories = categories;
       },
       (error) => {
         console.error('Error loading heroes:', error);
@@ -49,28 +62,4 @@ export class MyHeroListComponent implements OnInit{
     }
   }
 
-
-  editHero(hero: any): void {
-    // Activez le mode d'édition pour ce héros
-    this.editingHeroId = hero.id;
-  }
-
-  saveEditedHero(heroId: number, heroUpdates: any): void {
-    this.heroService.patchHero(heroId, heroUpdates).subscribe(
-      (updatedHero) => {
-        // Mettez à jour la liste des héros après avoir appliqué les modifications
-        this.loadHeroes();
-        // Désactivez le mode d'édition après avoir sauvegardé les modifications
-        this.editingHeroId = null;
-      },
-      (error) => {
-        console.error('Error updating hero:', error);
-      }
-    );
-  }
-
-  cancelEdit(): void {
-    // Désactivez le mode d'édition sans sauvegarder les modifications
-    this.editingHeroId = null;
-  }
 }
