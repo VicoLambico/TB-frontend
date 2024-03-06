@@ -7,7 +7,7 @@ h1,h2,h4 {
   border-radius: 8px;
   padding: 10px;
   margin: 10px;
-  width: 400px;
+  width: 300px;
   display: inline-block;
   vertical-align: top;
   background-color: #000000;
@@ -79,17 +79,17 @@ textarea{
 }
 
 .stat-meter.lp::-webkit-progress-value {
-  background-color: green; /* Couleur verte pour Life Point */
+  background-color: green;
 }
 
 /* Damage */
 .stat-meter.dps::-webkit-progress-value {
-  background-color: #e57373; /* Couleur rouge pour Damage */
+  background-color: #e57373;
 }
 
 /* Energy */
 .stat-meter.energy::-webkit-progress-value {
-  background-color: #64b5f6; /* Couleur bleue pour Energy */
+  background-color: #64b5f6;
 }
 .stat-value {
   display: inline-block;

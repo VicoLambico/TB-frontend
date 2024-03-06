@@ -16,6 +16,7 @@ export class AuthFormComponent {
   user = {email: '', login: '', password: ''};
   credentials = {login: '', password: ''};
 
+
   constructor(private userService: UserService, private router: Router, private snackBar: MatSnackBar) {
   }
 
@@ -55,6 +56,8 @@ export class AuthFormComponent {
     this.userService.login(this.credentials).subscribe(response => {
         console.log('Login successful:', response);
         const userId = response.id;
+        this.userService.admin = response.admin;
+
         this.userService.setUserId(userId);
         this.userService.setLoggedIn(true);
         this.router.navigate(['/user']);

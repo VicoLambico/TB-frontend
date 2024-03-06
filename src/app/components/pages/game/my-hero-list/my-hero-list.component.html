@@ -1,29 +1,56 @@
-
 <h2>Heroes List</h2>
 
 <div *ngFor="let hero of heroes" class="hero-card">
-  <h1>{{ hero.heroName }}</h1>
-  <p>Level: {{ hero.lvl }}</p>
-  <p>Experience: {{ hero.experience }}</p>
-  <p>Life Point: {{ hero.lp }}</p>
-  <p>Damage Per Second: {{ hero.dps }}</p>
-  <p>Energy: {{ hero.energy }}</p>
 
-  <p>Category: {{hero.categoryName}}</p>
-  <p>Competences: {{hero.competencesNames}}</p>
+<!--  <div *ngIf="userId == hero.userHeroes.id">-->
 
-  <div *ngIf="editingHeroId === hero.id" class="edit-section">
-    <label for="editedHeroName">Hero Name:</label>
-    <input type="text" id="editedHeroName" [(ngModel)]="editedHeroName" name="editedHeroName" />
+  <div class="card-header">
+    <h1>{{ hero.heroName }}</h1>
 
 
+    <p>Level: {{ hero.lvl }}</p>
 
-
+      <label>Experience:</label>
+      <div class="stat-bar experience-bar">
+        <div class="stat-value">{{ hero.experience }}/100</div>
+    </div>
 
   </div>
 
-  <div *ngIf="editingHeroId !== hero.id">
-    <button (click)="confirmRemoveHero(hero.id)" class="action-button remove-button">Remove</button>
+  <div class="card-info">
+    <p>Category: {{hero.categoryName}}</p>
+    <p>Competences: {{getCompetence(hero.categoryName)}}</p>
   </div>
+
+  <div class="card-body">
+
+    <div class="stat">
+      <label>Damage:</label>
+      <div class="stat-bar damage-bar">
+        <div class="stat-value">{{ hero.dps}}</div>
+      </div>
+    </div>
+
+    <div class="stat">
+      <label>Life Point:</label>
+      <div class="stat-bar life-point-bar">
+        <div class="stat-value">{{ hero.lp}}/{{ hero.lp}}</div>
+      </div>
+    </div>
+
+    <div class="stat">
+      <label>Energy:</label>
+      <div class="stat-bar energy-bar">
+        <div class="stat-value">{{ hero.energy}}/{{ hero.energy}}</div>
+      </div>
+    </div>
+
+
+    <div class="button">
+      <button (click)="confirmRemoveHero(hero.id)" class="action-button remove-button">Remove</button>
+    </div>
+
+  </div>
+<!--</div>-->
 
 </div>

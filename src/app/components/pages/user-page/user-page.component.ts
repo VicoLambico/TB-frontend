@@ -18,15 +18,13 @@ export class UserPageComponent implements OnInit {
 
 
   constructor(private userService: UserService,
-  private categoriesService: ManageCategoriesService,
+              private categoriesService: ManageCategoriesService,
               private competencesService: ManageCompetencesService,
               private router: Router
   ) {
 
   }
-  isAuthenticated(): boolean {
-    return this.userService.isAuthenticated();
-  }
+
   ngOnInit(): void {
     // Récupérer l'ID de l'utilisateur à partir de l'URL
     this.userService.getUserData().subscribe(data => {
@@ -41,6 +39,7 @@ export class UserPageComponent implements OnInit {
     this.loadCategories()
     this.loadCompetences()
   }
+
   loadCompetences(): void {
     this.competencesService.getAllCompetence().subscribe(
       (competences) => {
@@ -63,6 +62,7 @@ export class UserPageComponent implements OnInit {
       }
     );
   }
+
   isUserRoute(): boolean {
     return this.router.url === '/user';
   }

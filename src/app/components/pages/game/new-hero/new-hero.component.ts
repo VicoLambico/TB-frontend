@@ -15,7 +15,6 @@ export class NewHeroComponent implements OnInit{
   categories: any[] = [];
   competences: any[] =[];
   selectedCategory: any | null = null;
-  competencesCategory :any[] =[];
   constructor(
     private fb: FormBuilder,
     private heroService: ManageHeroesService,

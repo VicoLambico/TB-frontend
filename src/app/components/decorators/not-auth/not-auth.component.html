@@ -1,9 +1,10 @@
-
-<div class="not-auth-container">
-  <mat-card>
-    <mat-card-content>
-      <p class="not-auth-message">You are not authenticated</p>
-      <button mat-raised-button color="warn" (click)="navigateToLoginPage()">Navigate to Login Page</button>
-    </mat-card-content>
-  </mat-card>
+<div *ngIf="!isAuthenticated()">
+  <div class="not-auth-container">
+    <mat-card>
+      <mat-card-content>
+        <p class="not-auth-message">You are not authenticated</p>
+        <button mat-raised-button color="warn" (click)="navigateToLoginPage()">Navigate to Login Page</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {EMPTY, map, Observable, throwError} from "rxjs";
 import {Router} from "@angular/router";
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,12 +12,21 @@ export class UserService {
   private apiURL = "http://localhost:8081/api";
   private userId: string | null = null;
   private isLoggedIn: boolean = false;
+  private _admin : boolean = false;
   constructor(private http: HttpClient, private router: Router) { }
+
+
+  get admin(): boolean {
+    return this._admin;
+  }
+
+  set admin(value: boolean) {
+    this._admin = value;
+  }
 
   getUserId(): string | null {
     return this.userId;
   }
-
   setUserId(userId: string): void {
     this.userId = userId;
   }

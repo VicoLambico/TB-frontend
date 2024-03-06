@@ -1,14 +1,9 @@
-
+<div *ngIf="isAdmin()">
 <button mat-icon-button [matMenuTriggerFor]="secondaryMenu" (click)="toggleSecondaryMenu()">
   <mat-icon>edit_square</mat-icon>
 </button>
 <span>Manage</span>
 <mat-menu #secondaryMenu="matMenu">
-<!--  <button mat-menu-item (click)="manageHeroes()">-->
-<!--    <mat-icon>edit</mat-icon>-->
-<!--    <span>Manage heroes</span>-->
-<!--  </button>-->
-
   <button mat-menu-item (click)="manageCategories()">
     <mat-icon>edit</mat-icon>
     <span>Manage categories</span>
@@ -22,3 +17,5 @@
     <span>Manage quests</span>
   </button>
 </mat-menu>
+
+</div>

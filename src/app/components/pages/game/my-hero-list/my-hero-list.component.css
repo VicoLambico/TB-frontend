@@ -1,42 +1,160 @@
 
+/*h2 {*/
+/*  padding-left: 1rem;*/
+/*}*/
+
+/*.hero-card {*/
+/*  border: 1px solid #ccc;*/
+/*  border-radius: 8px;*/
+/*  padding: 10px;*/
+/*  margin: 10px;*/
+/*  width: 200px;*/
+/*  display: inline-block;*/
+/*  vertical-align: top;*/
+/*  background-color: #000000;*/
+/*  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+/*  transition: transform 0.3s ease-in-out;*/
+
+/*}*/
+
+/*.hero-card:hover {*/
+/*  transform: scale(1.05); !* Effet d'échelle lors du survol *!*/
+/*}*/
+
+/*.edit-section {*/
+/*  margin-top: 10px;*/
+/*}*/
+
+/*label {*/
+/*  display: block;*/
+/*  margin-bottom: 5px;*/
+/*}*/
+
+/*input {*/
+/*  width: calc(100% - 5px);*/
+/*  padding: 5px;*/
+/*  margin-bottom: 10px;*/
+/*  box-sizing: border-box;*/
+/*}*/
+
+
+/*.action-button {*/
+/*  color: white;*/
+/*  cursor: pointer;*/
+/*  border: none;*/
+/*  padding: 8px;*/
+/*  margin-top: 5px;*/
+/*  transition: background-color 0.3s ease-in-out;*/
+/*  border-radius: 4px;*/
+
+/*}*/
+
+/*.action-button:hover {*/
+/*  background-color: #333; !* Changement de couleur lors du survol *!*/
+/*}*/
+
+/*.remove-button {*/
+/*  background-color: #ff5252;*/
+
+/*}*/
+
+/*.edit-button {*/
+/*  background-color: #4caf50;*/
+/*  margin-right: 10px*/
+/*}*/
+/*.save-button{*/
+/*  background-color: #2196f3;*/
+/*  margin-right: 10px;*/
+/*  border-radius: 4px; !* Coins arrondis *!*/
+
+/*}*/
+
+/*.cancel-button {*/
+/*  background-color: #ff5252;*/
+/*  border-radius: 4px; !* Coins arrondis *!*/
+
+/*}*/
+/*.save-button:hover{*/
+/*  background-color: darkblue;*/
+/*}*/
+/*.cancel-button:hover {*/
+/*  background-color:darkred ;*/
+/*}*/
+
+
+
+
 h2 {
   padding-left: 1rem;
 }
 
 .hero-card {
-  border: 1px solid #ccc;
+  background-color: black;
+  color: white;
   border-radius: 8px;
-  padding: 10px;
   margin: 10px;
-  width: 200px;
-  display: inline-block;
-  vertical-align: top;
-  background-color: #000000;
+  width: 250px;
+  overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
-
+  display: inline-block;
+  vertical-align: top;
 }
 
 .hero-card:hover {
-  transform: scale(1.05); /* Effet d'échelle lors du survol */
+  transform: scale(1.05);
 }
 
-.edit-section {
-  margin-top: 10px;
+.card-header {
+  background: linear-gradient(to bottom, #0e032d, #040013 , #0e032d );
+  padding: 10px;
+  text-align: center;
+}
+
+.card-header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.card-info{
+  padding-left: 10px;
+  padding-top: 30px;
+  text-align: left;
+}
+.card-body {
+  padding: 10px;
+}
+
+.stat {
+  margin-bottom: 10px;
 }
 
 label {
   display: block;
   margin-bottom: 5px;
+  text-align: left;
+
 }
 
-input {
-  width: calc(100% - 5px);
-  padding: 5px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
+.stat-bar {
+  background-color: #444;
+  border-radius: 4px;
+  height: 20px;
+  position: relative;
 }
 
+.stat-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+
+}
+
+.category {
+  margin-top: 10px;
+}
 
 .action-button {
   color: white;
@@ -48,35 +166,26 @@ input {
   border-radius: 4px;
 
 }
-
+.button{
+  text-align: center;
+  padding: 10px;
+}
 .action-button:hover {
-  background-color: #333; /* Changement de couleur lors du survol */
+  background-color: #333;
 }
 
 .remove-button {
   background-color: #ff5252;
-
 }
 
-.edit-button {
-  background-color: #4caf50;
-  margin-right: 10px
-}
-.save-button{
-  background-color: #2196f3;
-  margin-right: 10px;
-  border-radius: 4px; /* Coins arrondis */
-
+.life-point-bar {
+  background-color: rgba(0, 200, 0, 0.3);
 }
 
-.cancel-button {
-  background-color: #ff5252;
-  border-radius: 4px; /* Coins arrondis */
+.energy-bar {
+  background-color: rgba(0, 0, 255, 0.3);
+}
 
-}
-.save-button:hover{
-  background-color: darkblue;
-}
-.cancel-button:hover {
-  background-color:darkred ;
+.damage-bar {
+  background-color: rgba(255, 0, 0, 0.3);
 }

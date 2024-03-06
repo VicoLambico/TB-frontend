@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ManageHeroesService} from "../../../../services/manage/manage-heroes.service";
 import {ManageCategoriesService} from "../../../../services/manage/manage-categories.service";
+import {UserService} from "../../../../services/user.service";
 
 @Component({
   selector: 'app-my-hero-list',
@@ -9,34 +10,36 @@ import {ManageCategoriesService} from "../../../../services/manage/manage-catego
 })
 export class MyHeroListComponent implements OnInit{
   heroes: any[] = [];
-  editingHeroId: number | null = null;
-  editedHeroName: string = '';
   categories: any[] = [];
-
+  userId: string | null = null ;
   constructor(
     private heroService: ManageHeroesService,
-    private categoriesService: ManageCategoriesService
+    private userService: UserService,
   ) { }
+
 
   ngOnInit(): void {
     this.loadHeroes();
-    this.loadCategories();
-  }
+    this.userId = this.userService.getUserId();
 
+  }
+  getCompetence(hero: string): string{
+    let competences = "";
+    if (hero == "Wizzard"){
+      competences = "Fireball"
+    }
+    if (hero  == "Warrior"){
+      competences = "Berzerk"
+    }
+    if (hero  == "Archer"){
+      competences = "Rain of Arrows"
+    }
+    return competences ;
+  }
   loadHeroes(): void {
     this.heroService.getAllHeroes().subscribe(
       (heroes) => {
         this.heroes = heroes;
-      },
-      (error) => {
-        console.error('Error loading heroes:', error);
-      }
-    );
-  }
-  loadCategories(): void {
-    this.categoriesService.getAllCategories().subscribe(
-      (categories) => {
-        this.categories = categories;
       },
       (error) => {
         console.error('Error loading heroes:', error);

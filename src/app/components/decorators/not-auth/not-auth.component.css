@@ -1,23 +1,14 @@
-/*.not-auth-container {*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*  align-items: flex-start; !* Ajustez pour aligner en haut *!*/
-/*  height: 100vh;*/
-/*  padding-top: 50px; !* Ajustez selon vos besoins *!*/
-/*}*/
-
-/*.not-auth-message {*/
-/*  font-size: 18px;*/
-/*  margin-bottom: 16px;*/
-/*}*/
-/* not-auth.component.css */
 .not-auth-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Un fond semi-transparent pour l'effet d'obscurcissement */
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
-  height: 100vh; /* Vous pouvez ajuster la hauteur en fonction de vos besoins */
-  background-color: indianred; /* Couleur de fond rouge avec une opacité de 0.5 */
-  padding-top: 100px;
+  z-index: 1000; /* Assurez-vous que la boîte de dialogue est au-dessus de tout le reste */
 }
 
 .not-auth-message {

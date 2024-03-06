@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
+import {UserService} from "../../../../services/user.service";
 
 @Component({
   selector: 'app-dev-menu',
@@ -8,12 +9,20 @@ import {Router} from "@angular/router";
 })
 export class DevMenuComponent {
 
-  constructor( private router: Router) {
-  }
+  constructor(
+    private router: Router,
+    private userService: UserService) {}
+
   isSecondaryMenuOpen: boolean = false;
+
+  isAdmin():boolean{
+    return this.userService.admin;
+  }
+
   toggleSecondaryMenu() {
     this.isSecondaryMenuOpen = !this.isSecondaryMenuOpen;
   }
+
   manageHeroes() {
     this.router.navigate(['/manage-heroes']);
   }
