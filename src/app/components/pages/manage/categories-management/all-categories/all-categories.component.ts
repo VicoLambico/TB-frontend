@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ManageHeroesService } from "../../../../../services/manage/manage-heroes.service";
+import {Component, OnInit} from '@angular/core';
+import {ManageHeroesService} from "../../../../../services/manage/manage-heroes.service";
 import {ManageCategoriesService} from "../../../../../services/manage/manage-categories.service";
 
 @Component({
@@ -15,11 +15,10 @@ export class AllCategoriesComponent implements OnInit {
   editedCategoryLP: number = 0;
   editedCategoryDPS: number = 0;
   editedCategoryEnergy: number = 0;
-  constructor(private categoriesService: ManageCategoriesService) { }
 
-  ngOnInit(): void {
-    this.loadCategories();
-  }
+  constructor(private categoriesService: ManageCategoriesService) {}
+
+  ngOnInit(): void { this.loadCategories();}
 
   loadCategories(): void {
     this.categoriesService.getAllCategories().subscribe(
@@ -45,16 +44,14 @@ export class AllCategoriesComponent implements OnInit {
   }
 
   confirmRemoveCategory(categoryId: number): void {
-    const confirmation = window.confirm("Do you really want to delete the category? The deletion will be permanent.");
-    if (confirmation) {
-      this.removeCategory(categoryId);
-    }
+    const confirmation = window.confirm
+    ("Do you really want to delete the category? " +
+      "The deletion will be permanent.");
+    if (confirmation) {this.removeCategory(categoryId);}
   }
 
-  editCategory(category: any): void {
-    // Activez le mode d'édition pour cette catégorie
-    this.editingCategoryId = category.id;
-  }
+  // Activez le mode d'édition pour cette catégorie
+  editCategory(category: any): void {this.editingCategoryId = category.id;}
 
   saveEditedCategory(categoryId: number, categoryUpdates: any): void {
     this.categoriesService.patchCategory(categoryId, categoryUpdates).subscribe(
@@ -62,17 +59,9 @@ export class AllCategoriesComponent implements OnInit {
         // Mettez à jour la liste des catégories après avoir appliqué les modifications
         this.loadCategories();
         // Désactivez le mode d'édition après avoir sauvegardé les modifications
-        this.editingCategoryId = null;
-        this.editedCategoryDescription = '';
-        this.editedCategoryName = '';
-        this.editedCategoryDPS = 0;
-        this.editedCategoryLP = 0;
-        this.editedCategoryEnergy = 0;
-
+        this.cancelCategoryEdit();
       },
-      (error) => {
-        console.error('Error updating category:', error);
-      }
+      (error) => { console.error('Error updating category:', error);}
     );
   }
 
@@ -84,6 +73,5 @@ export class AllCategoriesComponent implements OnInit {
     this.editedCategoryDPS = 0;
     this.editedCategoryLP = 0;
     this.editedCategoryEnergy = 0;
-
   }
 }

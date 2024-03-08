@@ -1,4 +1,3 @@
-
 <div *ngFor="let category of categories" class="category-card">
   <h3>{{ category.categoryName }}</h3>
   <p>Description:</p>
@@ -8,28 +7,32 @@
   <p>Energy: {{ category.energy }}</p>
   <div *ngIf="editingCategoryId === category.id">
     <label for="editedCategoryName">Category Name:</label>
-    <input type="text" id="editedCategoryName" [(ngModel)]="editedCategoryName" name="editedCategoryName" />
+    <input type="text" id="editedCategoryName" [(ngModel)]="editedCategoryName" name="editedCategoryName"/>
 
     <label for="editedCategoryDescription">Description:</label>
-    <textarea id="editedCategoryDescription" [(ngModel)]="editedCategoryDescription" name="editedCategoryDescription" style="resize: none;"></textarea>
+    <textarea id="editedCategoryDescription" [(ngModel)]="editedCategoryDescription" name="editedCategoryDescription"
+              style="resize: none;"></textarea>
 
     <label for="editedCategoryLP">Life point:</label>
-    <input type="number" id="editedCategoryLP" [(ngModel)]="editedCategoryLP" name="editedCategoryLP" />
+    <input type="number" id="editedCategoryLP" [(ngModel)]="editedCategoryLP" name="editedCategoryLP"/>
 
     <label for="editedCategoryDPS">Damage:</label>
-    <input type="number" id="editedCategoryDPS" [(ngModel)]="editedCategoryDPS" name="editedCategoryDPS" />
+    <input type="number" id="editedCategoryDPS" [(ngModel)]="editedCategoryDPS" name="editedCategoryDPS"/>
 
     <label for="editedCategoryEnergy">Energy:</label>
-    <input type="number" id="editedCategoryEnergy" [(ngModel)]="editedCategoryEnergy" name="editedCategoryEnergy" />
+    <input type="number" id="editedCategoryEnergy" [(ngModel)]="editedCategoryEnergy" name="editedCategoryEnergy"/>
 
-    <button (click)="saveEditedCategory(category.id, { categoryName: editedCategoryName, description: editedCategoryDescription })" class="action-button save-button">Save</button>
-    <button (click)="cancelCategoryEdit()" class="action-button cancel-button" >Cancel</button>
+    <button
+      (click)="saveEditedCategory(category.id, { categoryName: editedCategoryName, description: editedCategoryDescription, lp : editedCategoryLP, dps : editedCategoryDPS, energy : editedCategoryEnergy  })"
+      class="action-button save-button">Save
+    </button>
+    <button (click)="cancelCategoryEdit()" class="action-button cancel-button">Cancel</button>
 
   </div>
 
   <div *ngIf="editingCategoryId !== category.id">
     <button (click)="editCategory(category)" class="action-button edit-button">Edit</button>
-  <button (click)="confirmRemoveCategory(category.id)" class="action-button remove-button">Remove</button>
+    <button (click)="confirmRemoveCategory(category.id)" class="action-button remove-button">Remove</button>
 
   </div>
 

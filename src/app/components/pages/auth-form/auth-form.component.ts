@@ -17,8 +17,10 @@ export class AuthFormComponent {
   credentials = {login: '', password: ''};
 
 
-  constructor(private userService: UserService, private router: Router, private snackBar: MatSnackBar) {
-  }
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private snackBar: MatSnackBar) {}
 
   register() {
     // Vérifie si tous les champs sont remplis
@@ -26,15 +28,16 @@ export class AuthFormComponent {
       this.userService.register(this.user).subscribe(
         response => {
           console.log('User registered successfully:', response);
-          // Ajoutez ici la logique pour gérer la réponse de l'inscription
           this.snackBar.open('Successful registration, you can login', 'Close', {
             duration: 3000,
           });
+          // Change l'onglet actif à l'onglet de connexion après une inscription réussie
           this.tabGroup.selectedIndex = 0;
 
         },
         error => {
           console.error('Error registering user:', error);
+          // Gère les erreurs lors de l'inscription
           if (error.status === 400 && error.error) {
             this.snackBar.open(error.error, 'Close', {
               duration: 9000,
@@ -46,7 +49,7 @@ export class AuthFormComponent {
     } else {
       console.error('All fields (email, login, password) are required.');
       this.snackBar.open('Please fill in all fields.', 'Close', {
-        duration: 5000, // Durée pendant laquelle la notification est affichée (en millisecondes)
+        duration: 5000,
       });
 
     }
@@ -56,14 +59,15 @@ export class AuthFormComponent {
     this.userService.login(this.credentials).subscribe(response => {
         console.log('Login successful:', response);
         const userId = response.id;
+        // Définir le statut administrateur et l'ID de l'utilisateur connecté
         this.userService.admin = response.admin;
-
         this.userService.setUserId(userId);
         this.userService.setLoggedIn(true);
+        // Redirige vers la page utilisateur après une connexion réussie
         this.router.navigate(['/user']);
       },
       error => {
-
+        // Gère les erreurs de connexion
         console.error('Error login user:', error);
         if (error.status === 401) {
           // Utilisateur non trouvé dans la base de données
@@ -78,5 +82,4 @@ export class AuthFormComponent {
         }
       });
   }
-
 }
