@@ -12,30 +12,19 @@ export class MyHeroListComponent implements OnInit{
   heroes: any[] = [];
   categories: any[] = [];
   userId: string | null = null ;
+  heroId: string | null = null ;
   constructor(
     private heroService: ManageHeroesService,
     private userService: UserService,
+    private categoryService : ManageCategoriesService,
   ) { }
 
 
   ngOnInit(): void {
     this.loadHeroes();
     this.userId = this.userService.getUserId();
+  }
 
-  }
-  getCompetence(hero: string): string{
-    let competences = "";
-    if (hero == "Wizzard"){
-      competences = "Fireball"
-    }
-    if (hero  == "Warrior"){
-      competences = "Berzerk"
-    }
-    if (hero  == "Archer"){
-      competences = "Rain of Arrows"
-    }
-    return competences ;
-  }
   loadHeroes(): void {
     this.heroService.getAllHeroes().subscribe(
       (heroes) => {

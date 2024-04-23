@@ -79,6 +79,7 @@ export class NewHeroComponent implements OnInit{
         // Mettez à jour la variable selectedCategory en fonction des changements
         this.selectedCategory = selectedCategory.id;
 
+
         // Effectuez d'autres actions en fonction de la catégorie sélectionnée si nécessaire
         console.log('Selected Category (before submit):', this.selectedCategory);
 
